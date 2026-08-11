@@ -2,13 +2,21 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
 import { Button } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import { EASE_OUT } from "@/lib/motion";
 import { asset } from "@/lib/utils";
+
+// 3D hero object — client-only, loaded after paint to keep the initial bundle lean.
+const Hero3D = dynamic(() => import("./Hero3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="aspect-square w-full rounded-full bg-accent-soft opacity-40 blur-3xl" />
+  ),
+});
 
 function RotatingRole() {
   const reduce = useReducedMotion();
@@ -128,30 +136,18 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Duotone portrait */}
+        {/* 3D object */}
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduce ? false : { opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: EASE_OUT, delay: base + 0.2 }}
-          className="lg:col-span-4"
+          className="relative lg:col-span-4"
+          data-cursor="link"
         >
-          <div className="relative aspect-[3/4] w-full overflow-hidden border border-border">
-            <ImageWithFallback
-              src={profile.profileImage}
-              alt={profile.name}
-              label={profile.initials}
-              sizes="(max-width: 1024px) 100vw, 33vw"
-              priority
-              className="grayscale contrast-[1.05] transition-[filter] duration-700 hover:grayscale-0"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 mix-blend-color bg-accent/20"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-border bg-background/60 px-3 py-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground backdrop-blur">
-              <span>{profile.location.split(",")[0]}</span>
-              <span>IND</span>
-            </div>
+          <Hero3D />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+            <span>WebGL</span>
+            <span>drag / move</span>
           </div>
         </motion.div>
       </div>

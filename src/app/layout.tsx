@@ -8,7 +8,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Cursor } from "@/components/layout/Cursor";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { WebGLBackground } from "@/components/layout/WebGLBackground";
 import { Preloader } from "@/components/layout/Preloader";
 import { profile } from "@/data/profile";
 import { SITE_URL } from "@/lib/site";
@@ -103,7 +102,6 @@ export default function RootLayout({
             Skip to content
           </a>
           <Preloader />
-          <WebGLBackground />
           <ScrollProgress />
           <Cursor />
           <Navbar />

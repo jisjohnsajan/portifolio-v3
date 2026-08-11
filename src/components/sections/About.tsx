@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import { profile } from "@/data/profile";
 
 export function About() {
@@ -15,7 +16,27 @@ export function About() {
         />
 
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          {/* Portrait */}
+          <div className="lg:col-span-4">
+            <Reveal>
+              <div className="relative aspect-[3/4] w-full overflow-hidden border border-border">
+                <ImageWithFallback
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  label={profile.initials}
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="grayscale contrast-[1.05] transition-[filter] duration-700 hover:grayscale-0"
+                />
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-border bg-background/60 px-3 py-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground backdrop-blur">
+                  <span>{profile.name}</span>
+                  <span>{profile.location.split(",")[0]}</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Text + stats */}
+          <div className="lg:col-span-8">
             <Reveal>
               <p className="text-lg leading-relaxed text-foreground/90">
                 {profile.bio}
@@ -32,11 +53,8 @@ export function About() {
                 </Reveal>
               ))}
             </ul>
-          </div>
 
-          <div className="lg:col-span-5">
-            {/* Stat cards */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="mt-10 grid grid-cols-3 gap-3">
               {profile.stats.map((stat, i) => (
                 <Reveal key={stat.label} delay={i * 0.08}>
                   <div className="rounded-xl border border-border bg-surface p-4">
@@ -51,7 +69,6 @@ export function About() {
               ))}
             </div>
 
-            {/* Currently building */}
             <Reveal delay={0.1}>
               <div className="mt-3 rounded-xl border border-border bg-surface p-5">
                 <div className="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-widest text-muted-foreground">
@@ -61,19 +78,25 @@ export function About() {
                   </span>
                   Currently building
                 </div>
-                <div className="mt-3 font-display text-xl font-medium">
-                  {cb.project}
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">{cb.status}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {cb.technologies.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <div className="font-display text-xl font-medium">
+                      {cb.project}
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {cb.status}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {cb.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </Reveal>

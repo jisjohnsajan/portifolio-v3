@@ -74,9 +74,7 @@
   }
 
   body {
-    /* Transparent so the fixed WebGL canvas (dark theme) shows through.
-       The html element carries the base color for both themes. */
-    background-color: transparent;
+    background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
