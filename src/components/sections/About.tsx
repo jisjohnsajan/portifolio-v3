@@ -9,7 +9,7 @@ export function About() {
     <section id="about" className="scroll-mt-24 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="01"
+          index="02"
           eyebrow="About"
           title="I build things and enjoy figuring out how they work."
         />

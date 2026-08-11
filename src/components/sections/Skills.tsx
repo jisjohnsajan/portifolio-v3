@@ -7,9 +7,9 @@ export function Skills() {
     <section id="skills" className="scroll-mt-24 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="02"
-          eyebrow="Skills & Toolkit"
-          title="The languages, tools and ways of thinking I work with."
+          index="03"
+          eyebrow="Capabilities"
+          title="What I work with, and how I think."
         />
       </div>
 
@@ -28,29 +28,35 @@ export function Skills() {
         </div>
       </div>
 
-      {/* Category cards */}
-      <div className="mx-auto mt-14 max-w-6xl px-6">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group, i) => (
-            <Reveal key={group.category} delay={i * 0.06}>
-              <div className="h-full rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-border-strong">
-                <h3 className="font-mono text-xs uppercase tracking-widest text-accent">
+      {/* Editorial capability rows */}
+      <div className="mx-auto mt-4 max-w-6xl px-6">
+        {skillGroups.map((group, i) => (
+          <Reveal key={group.category}>
+            <div className="grid grid-cols-1 gap-6 border-b border-border py-8 md:grid-cols-12 md:items-baseline md:gap-10">
+              <div className="flex items-baseline gap-4 md:col-span-4">
+                <span className="font-mono text-sm text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-2xl font-semibold sm:text-3xl">
                   {group.category}
                 </h3>
-                <ul className="mt-5 space-y-4">
-                  {group.skills.map((skill) => (
-                    <li key={skill.name}>
-                      <div className="font-medium">{skill.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {skill.description}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </Reveal>
-          ))}
-        </div>
+              <ul className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 md:col-span-8">
+                {group.skills.map((skill) => (
+                  <li key={skill.name} className="flex items-baseline gap-3">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                    <span>
+                      <span className="font-medium">{skill.name}</span>
+                      <span className="ml-2 text-sm text-muted-foreground">
+                        {skill.description}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

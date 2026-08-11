@@ -21,6 +21,8 @@ export interface Profile {
   location: string;
   email: string;
   availability: string;
+  /** Four headline areas shown in the hero metadata strip. */
+  capabilities: string[];
   profileImage: string;
   resume: string;
   stats: { value: string; label: string; sublabel?: string }[];
@@ -55,6 +57,12 @@ export const profile: Profile = {
   location: "Kannur, Kerala",
   email: "jisjohnsajan@gmail.com",
   availability: "Open to internships & collaborations",
+  capabilities: [
+    "Software Engineering",
+    "App Development",
+    "IoT & Hardware",
+    "Web & Creative Tech",
+  ],
   // Drop your photo at this path. A branded placeholder renders until then.
   profileImage: "/images/profile/jis-john-sajan.jpg",
   // Drop your PDF at this path to enable the résumé download.
