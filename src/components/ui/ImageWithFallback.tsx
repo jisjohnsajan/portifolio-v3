@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 
 interface ImageWithFallbackProps {
   src: string;
@@ -50,7 +50,7 @@ export function ImageWithFallback({
 
   return (
     <Image
-      src={src}
+      src={asset(src)}
       alt={alt}
       fill
       sizes={sizes}

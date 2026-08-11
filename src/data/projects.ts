@@ -77,7 +77,7 @@ export const projects: Project[] = [
     description:
       "A responsive and interactive personal portfolio featuring smooth scroll animations, a custom cursor, a certificate lightbox and a dark, recruiter-focused design built with modern web technologies.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    thumbnail: "/images/projects/portfolio-v2.jpg",
+    thumbnail: "/images/projects/portfolio-v2.png",
     github: "https://github.com/jisjohnsajan/portifolio-v2",
     featured: true,
     problem: "[Describe what you wanted this portfolio to achieve.]",
