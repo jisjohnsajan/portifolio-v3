@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import { EASE_OUT } from "@/lib/motion";
+import { asset } from "@/lib/utils";
 
 function RotatingRole() {
   const reduce = useReducedMotion();
@@ -136,7 +137,7 @@ export function Hero() {
             <Button href="#contact" variant="secondary">
               Let&apos;s connect
             </Button>
-            <Button href={profile.resume} variant="ghost">
+            <Button href={asset(profile.resume)} variant="ghost">
               <Download className="h-4 w-4" />
               Résumé
             </Button>
