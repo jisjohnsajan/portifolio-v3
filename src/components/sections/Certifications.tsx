@@ -68,7 +68,7 @@ export function Certifications() {
                     label={cert.issuer}
                     sizes="(max-width: 640px) 50vw, 33vw"
                     fit="cover"
-                    className="transition-transform duration-500 group-hover:scale-105"
+                    className="grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
                   />
                 </div>
                 <div className="p-4">

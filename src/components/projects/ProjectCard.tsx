@@ -50,7 +50,7 @@ export function ProjectCard({ project, index, feature }: ProjectCardProps) {
           alt={`${project.title} preview`}
           label={project.title}
           sizes={feature ? "(max-width: 1024px) 100vw, 55vw" : "(max-width: 768px) 100vw, 50vw"}
-          className="transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
+          className="grayscale transition duration-[600ms] ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
         />
         <div className="absolute left-4 top-4 rounded-full bg-background/70 px-2.5 py-1 font-mono text-xs text-muted-foreground backdrop-blur">
           {String(index + 1).padStart(2, "0")}

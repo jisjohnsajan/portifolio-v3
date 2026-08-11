@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
 import { projects } from "@/data/projects";
 
 export function FeaturedWork() {
@@ -14,7 +14,7 @@ export function FeaturedWork() {
         />
 
         <div className="mt-14">
-          <ProjectGrid projects={projects} />
+          <ProjectShowcase projects={projects} />
         </div>
       </div>
     </section>

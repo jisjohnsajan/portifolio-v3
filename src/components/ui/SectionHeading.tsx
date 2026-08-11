@@ -21,7 +21,7 @@ export function SectionHeading({
     <div className={cn("max-w-2xl", className)}>
       <Reveal>
         <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          <span className="text-accent">{index}</span>
+          <span className="text-accent">({index})</span>
           <span className="h-px w-8 bg-border-strong" aria-hidden />
           <span>{eyebrow}</span>
         </div>
